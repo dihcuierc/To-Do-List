@@ -1,9 +1,9 @@
 import TodoItems from "./components/TodoItems";
 import AddTodo from "./components/AddTodo";
-import { Link } from "react-router-dom";
 import classes from "./Todolist.module.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import SortItems from "./components/SortItems";
+import FilterItems from "./components/FilterItems";
 
 function Todolist() {
   const dummyData = [
@@ -12,47 +12,52 @@ function Todolist() {
       title: "Finish Homework",
       details:
         "Complete the math and history assignments for tomorrow's classes.",
-      priority: "High",
-      category: "School",
+      priority: 1,
+      category: "Work",
     },
     {
       id: 2,
       title: "Grocery Shopping",
       details: "Buy milk, eggs, bread, and fruits from the supermarket.",
-      priority: "Medium",
-      category: "Errands",
+      priority: 2,
+      category: "Home",
     },
     {
       id: 3,
       title: "Plan Vacation",
       details:
         "Research and plan a vacation for next summer. Check for flight deals and accommodations.",
-      priority: "Low",
-      category: "Personal",
+      priority: 3,
+      category: "Other",
     },
   ];
 
-  const [newTodo, setNewTodo] = useState({
-    id: "",
-    title: "",
-    details: "",
-    priority: "",
-    category: "",
-  });
-
-  const [clicked, setClicked] = useState(false);
+  const [todolist, setTodolist] = useState(dummyData);
+  const [addItemForm, setAddItemForm] = useState(false);
+  const [filteredItems, setFilteredItems] = useState(todolist);
   const onClickedHandler = (props) => {
-    setClicked(props);
+    setAddItemForm(props);
   };
 
   return (
-    <div>
-      <h1>Todolist</h1>
+    <div className={classes.container}>
+      <h1 className={classes.header}>Todolist</h1>
       <button className={classes.button} onClick={() => onClickedHandler(true)}>
         Add
       </button>
-      {clicked && <AddTodo onClicked={onClickedHandler} />}
-      <TodoItems items={dummyData} />
+      <SortItems todolist={todolist} setTodolist={setTodolist} />
+      <FilterItems
+        filteredItems={todolist}
+        setFilteredItems={setFilteredItems}
+      />
+      {addItemForm && (
+        <AddTodo
+          onClicked={onClickedHandler}
+          data={todolist}
+          onDataAdd={setTodolist}
+        />
+      )}
+      <TodoItems items={filteredItems} onRemoveItem={setTodolist} />
     </div>
   );
 }

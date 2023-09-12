@@ -1,0 +1,26 @@
+.item {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.item p {
+  margin: 0;
+  padding: 0;
+}
+
+.remove {
+  background-color: #23db51;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.remove:hover {
+  background-color: rgb(20, 125, 34);
+}
