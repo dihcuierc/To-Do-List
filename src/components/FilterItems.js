@@ -1,23 +1,26 @@
+import { useEffect } from "react";
+import classes from "./Dropdown.module.css";
+
 export default function FilterItems(props) {
   const handleFilter = (filter) => {
-    let filteredList;
-    if (filter === "All") {
-      filteredList = props.filteredItems;
-    } else {
-      filteredList = props.filteredItems.filter(
-        (item) => item.category === filter
-      );
-    }
-    props.setFilteredItems(filteredList);
+    props.setFilter(filter);
   };
+
+  useEffect(() => {
+    props.setFilter("All");
+  }, []);
+
   return (
-    <div>
-      <label>Filter by Category: </label>
-      <select onChange={(e) => handleFilter(e.target.value)}>
+    <div className={classes.container}>
+      <label className={classes.label}>Filter by Category: </label>
+      <select
+        className={classes.select}
+        onChange={(e) => handleFilter(e.target.value)}
+      >
         <option value="All">All</option>
-        {props.filteredItems.map((item) => (
-          <option key={item.index} value={item.category}>
-            {item.category}
+        {props.categories.map((item) => (
+          <option key={item} value={item}>
+            {item}
           </option>
         ))}
       </select>

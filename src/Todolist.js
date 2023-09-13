@@ -32,12 +32,40 @@ function Todolist() {
     },
   ];
 
+  const categories = [
+    "Work",
+    "Personal",
+    "Home",
+    "Health & Fitness",
+    "Shopping",
+    "Other",
+  ];
+
   const [todolist, setTodolist] = useState(dummyData);
   const [addItemForm, setAddItemForm] = useState(false);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("all");
+  const [order, setOrder] = useState("ascending");
+  const [updatedList, setUpdatedList] = useState(todolist);
   const onClickedHandler = (props) => {
     setAddItemForm(props);
   };
+
+  useEffect(() => {
+    const filteredItems =
+      filter === "All"
+        ? todolist
+        : todolist.filter((item) => item.category === filter);
+    setUpdatedList(filteredItems);
+
+    const sortedList = [...filteredItems].sort((item1, item2) => {
+      if (order === "ascending") {
+        return item1.priority - item2.priority;
+      } else {
+        return item2.priority - item1.priority;
+      }
+    });
+    setUpdatedList(sortedList);
+  }, [filter, order, todolist]);
 
   return (
     <div className={classes.container}>
@@ -45,16 +73,27 @@ function Todolist() {
       <button className={classes.button} onClick={() => onClickedHandler(true)}>
         Add
       </button>
-      <SortItems todolist={todolist} setTodolist={setTodolist} />
-      <FilterItems filteredItems={filter} setFilteredItems={setFilter} />
+      <SortItems setOrder={setOrder} />
+      <FilterItems
+        filterCategory={todolist}
+        setFilter={setFilter}
+        categories={categories}
+      />
       {addItemForm && (
         <AddTodo
           onClicked={onClickedHandler}
           data={todolist}
           onDataAdd={setTodolist}
+          categories={categories}
         />
       )}
-      <TodoItems items={todolist} onRemoveItem={setTodolist} />
+      <TodoItems
+        updatedList={updatedList}
+        onUpdateItems={setTodolist}
+        filterCategory={filter}
+        order={order}
+        items={todolist}
+      />
     </div>
   );
 }

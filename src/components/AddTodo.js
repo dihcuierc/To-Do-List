@@ -3,14 +3,6 @@ import Modal from "../UI/Modal";
 import classes from "./AddTodo.module.css";
 
 export default function AddTodo(props) {
-  const categories = [
-    "Work",
-    "Personal",
-    "Home",
-    "Health & Fitness",
-    "Shopping",
-    "Other",
-  ];
   const [formData, setFormData] = useState({
     title: "",
     details: "",
@@ -31,7 +23,6 @@ export default function AddTodo(props) {
     if (formData.category === "") {
       formData.category = "Work";
     }
-    console.log(formData);
     props.onClicked(false);
     props.onDataAdd((prev) => [...prev, formData]);
   };
@@ -75,7 +66,7 @@ export default function AddTodo(props) {
               id="category"
               onChange={(e) => handleInputChange(e)}
             >
-              {categories.map((category) => (
+              {props.categories.map((category) => (
                 <option key={category} value={category}>
                   {category}
                 </option>

@@ -1,23 +1,22 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import classes from "./Dropdown.module.css";
 
 export default function SortItems(props) {
-  const [sortOrder, setSortOrder] = useState("ascending");
   const handleSort = (order) => {
-    setSortOrder(order);
-    const sortedList = [...props.todolist].sort((a, b) => {
-      if (sortOrder === "ascending") {
-        return a.priority - b.priority;
-      } else {
-        return b.priority - a.priority;
-      }
-    });
-    props.setTodolist(sortedList);
+    props.setOrder(order);
   };
 
+  useEffect(() => {
+    props.setOrder("ascending");
+  }, []);
+
   return (
-    <div>
-      <label>Sort by Priority: </label>
-      <select onChange={(e) => handleSort(e.target.value)}>
+    <div className={classes.container}>
+      <label className={classes.label}>Sort by Priority: </label>
+      <select
+        className={classes.select}
+        onChange={(e) => handleSort(e.target.value)}
+      >
         <option value="ascending">Ascending</option>
         <option value="descending">Descending</option>
       </select>
