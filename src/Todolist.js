@@ -34,7 +34,7 @@ function Todolist() {
 
   const [todolist, setTodolist] = useState(dummyData);
   const [addItemForm, setAddItemForm] = useState(false);
-  const [filteredItems, setFilteredItems] = useState(todolist);
+  const [filter, setFilter] = useState("");
   const onClickedHandler = (props) => {
     setAddItemForm(props);
   };
@@ -46,10 +46,7 @@ function Todolist() {
         Add
       </button>
       <SortItems todolist={todolist} setTodolist={setTodolist} />
-      <FilterItems
-        filteredItems={todolist}
-        setFilteredItems={setFilteredItems}
-      />
+      <FilterItems filteredItems={filter} setFilteredItems={setFilter} />
       {addItemForm && (
         <AddTodo
           onClicked={onClickedHandler}
@@ -57,7 +54,7 @@ function Todolist() {
           onDataAdd={setTodolist}
         />
       )}
-      <TodoItems items={filteredItems} onRemoveItem={setTodolist} />
+      <TodoItems items={todolist} onRemoveItem={setTodolist} />
     </div>
   );
 }
