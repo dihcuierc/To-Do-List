@@ -12,7 +12,7 @@ function Todolist() {
       title: "Finish Homework",
       details:
         "Complete the math and history assignments for tomorrow's classes.",
-      priority: 1,
+      priority: 3,
       category: "Work",
       done: false,
     },
@@ -88,6 +88,7 @@ function Todolist() {
           data={todolist}
           onDataAdd={setTodolist}
           categories={categories}
+          add={{ title: "", details: "", priority: "", category: "", done: "" }}
         />
       )}
       <TodoItems

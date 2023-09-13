@@ -1,3 +1,4 @@
+import AddTodo from "./AddTodo";
 import classes from "./TodoItems.module.css";
 
 export default function TodoItems(props) {
@@ -9,7 +10,17 @@ export default function TodoItems(props) {
   const handleDone = (itemId) => {
     const updatedItems = props.items.map((item) => {
       if (item.id === itemId) {
-        return { ...item, done: true }; // Mark the item as done
+        return { ...item, done: true };
+      }
+      return item;
+    });
+    props.onUpdateItems(updatedItems);
+  };
+
+  const handleEdit = (itemId) => {
+    const updatedItems = props.items.map((item) => {
+      if (item.id === itemId) {
+        return <AddTodo />;
       }
       return item;
     });
@@ -27,6 +38,12 @@ export default function TodoItems(props) {
           <p>{item.details}</p>
           <p>{item.priority}</p>
           <p>{item.category}</p>
+          <button
+            className={classes.removeButton}
+            onClick={() => handleEdit(item.id)}
+          >
+            Edit
+          </button>
           <button
             className={classes.doneButton}
             onClick={() => handleDone(item.id)}

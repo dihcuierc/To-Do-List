@@ -36,7 +36,12 @@ export default function AddTodo(props) {
             <label className={classes.label} htmlFor="title">
               Title:
             </label>
-            <input id="title" type="text" onChange={handleInputChange} />
+            <input
+              id="title"
+              type="text"
+              onChange={handleInputChange}
+              defaultValue={props.true ? "" : props.add.title}
+            />
           </div>
           <div className={classes.input}>
             <label className={classes.label} htmlFor="details">
