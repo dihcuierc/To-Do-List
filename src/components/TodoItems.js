@@ -6,19 +6,38 @@ export default function TodoItems(props) {
     props.onUpdateItems(updatedItems);
   };
 
+  const handleDone = (itemId) => {
+    const updatedItems = props.items.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, done: true }; // Mark the item as done
+      }
+      return item;
+    });
+    props.onUpdateItems(updatedItems);
+  };
+
   return (
     <div>
       {props.updatedList.map((item) => (
-        <div className={classes.item} key={item.title}>
+        <div
+          className={`${classes.item} ${item.done ? classes.done : ""}`}
+          key={item.title}
+        >
           <p>{item.title}</p>
           <p>{item.details}</p>
           <p>{item.priority}</p>
           <p>{item.category}</p>
           <button
-            className={classes.remove}
-            onClick={() => handleRemove(item.id)}
+            className={classes.doneButton}
+            onClick={() => handleDone(item.id)}
           >
             Done
+          </button>
+          <button
+            className={classes.removeButton}
+            onClick={() => handleRemove(item.id)}
+          >
+            X
           </button>
         </div>
       ))}

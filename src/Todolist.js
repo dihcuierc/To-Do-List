@@ -14,6 +14,7 @@ function Todolist() {
         "Complete the math and history assignments for tomorrow's classes.",
       priority: 1,
       category: "Work",
+      done: false,
     },
     {
       id: 2,
@@ -21,6 +22,7 @@ function Todolist() {
       details: "Buy milk, eggs, bread, and fruits from the supermarket.",
       priority: 2,
       category: "Home",
+      done: false,
     },
     {
       id: 3,
@@ -29,6 +31,7 @@ function Todolist() {
         "Research and plan a vacation for next summer. Check for flight deals and accommodations.",
       priority: 3,
       category: "Other",
+      done: false,
     },
   ];
 

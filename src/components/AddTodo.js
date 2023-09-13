@@ -8,6 +8,7 @@ export default function AddTodo(props) {
     details: "",
     priority: "1",
     category: "",
+    done: false,
   });
 
   const handleInputChange = (event) => {
