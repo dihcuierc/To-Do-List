@@ -6,10 +6,6 @@ export default function SortItems(props) {
     props.setOrder(order);
   };
 
-  useEffect(() => {
-    props.setOrder("ascending");
-  }, []);
-
   return (
     <div className={classes.container}>
       <label className={classes.label}>Sort by Priority: </label>

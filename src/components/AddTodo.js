@@ -7,8 +7,7 @@ export default function AddTodo(props) {
     title: "",
     details: "",
     priority: "1",
-    category: "",
-    done: false,
+    category: "Work",
   });
 
   const handleInputChange = (event) => {
@@ -21,18 +20,19 @@ export default function AddTodo(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData.category === "") {
-      formData.category = "Work";
-    }
     props.onClicked(false);
     props.onDataAdd((prev) => [...prev, formData]);
+  };
+
+  const handleCancel = () => {
+    props.onClicked(false);
   };
 
   return (
     <Modal className={classes.modal}>
       <div className={classes.content}>
-        <form>
-          <div className={classes.input}>
+        <form onSubmit={handleSubmit}>
+          <div>
             <label className={classes.label} htmlFor="title">
               Title:
             </label>
@@ -40,16 +40,22 @@ export default function AddTodo(props) {
               id="title"
               type="text"
               onChange={handleInputChange}
-              defaultValue={props.true ? "" : props.add.title}
+              className={classes.input}
+              required
             />
           </div>
-          <div className={classes.input}>
+          <div>
             <label className={classes.label} htmlFor="details">
               Details:
             </label>
-            <input id="details" type="text" onChange={handleInputChange} />
+            <input
+              id="details"
+              type="text"
+              onChange={handleInputChange}
+              className={classes.input}
+            />
           </div>
-          <div className={classes.input}>
+          <div>
             <label className={classes.label} htmlFor="priority">
               Priority:
             </label>
@@ -61,9 +67,10 @@ export default function AddTodo(props) {
               step="1"
               defaultValue="1"
               onChange={handleInputChange}
+              className={classes.input}
             />
           </div>
-          <div className={classes.input}>
+          <div>
             <label className={classes.label} htmlFor="category">
               Category:
             </label>
@@ -71,6 +78,7 @@ export default function AddTodo(props) {
               name="category"
               id="category"
               onChange={(e) => handleInputChange(e)}
+              className={classes.input}
             >
               {props.categories.map((category) => (
                 <option key={category} value={category}>
@@ -79,10 +87,14 @@ export default function AddTodo(props) {
               ))}
             </select>
           </div>
-          <button className={classes.add} type="submit" onClick={handleSubmit}>
+          <button className={classes.add} type="submit">
             Add
           </button>
-          <button className={classes.cancel} type="submit">
+          <button
+            className={classes.cancel}
+            type="button"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
         </form>

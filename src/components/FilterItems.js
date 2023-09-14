@@ -6,10 +6,6 @@ export default function FilterItems(props) {
     props.setFilter(filter);
   };
 
-  useEffect(() => {
-    props.setFilter("All");
-  }, []);
-
   return (
     <div className={classes.container}>
       <label className={classes.label}>Filter by Category: </label>

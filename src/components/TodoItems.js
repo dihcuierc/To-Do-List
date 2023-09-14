@@ -31,31 +31,29 @@ export default function TodoItems(props) {
     <div>
       {props.updatedList.map((item) => (
         <div
-          className={`${classes.item} ${item.done ? classes.done : ""}`}
+          className={`${classes.entry} ${item.done ? classes.done : ""}`}
           key={item.title}
         >
-          <p>{item.title}</p>
-          <p>{item.details}</p>
-          <p>{item.priority}</p>
-          <p>{item.category}</p>
-          <button
-            className={classes.removeButton}
-            onClick={() => handleEdit(item.id)}
-          >
-            Edit
-          </button>
-          <button
-            className={classes.doneButton}
-            onClick={() => handleDone(item.id)}
-          >
-            Done
-          </button>
-          <button
-            className={classes.removeButton}
-            onClick={() => handleRemove(item.id)}
-          >
-            X
-          </button>
+          <div className={classes.text}>
+            <p>{item.title}</p>
+            <p>{item.details}</p>
+            <p>{item.priority}</p>
+            <p>{item.category}</p>
+          </div>
+          <div className={classes.button}>
+            <button
+              className={classes.doneButton}
+              onClick={() => handleDone(item.id)}
+            >
+              Done
+            </button>
+            <button
+              className={classes.removeButton}
+              onClick={() => handleRemove(item.id)}
+            >
+              X
+            </button>
+          </div>
         </div>
       ))}
     </div>

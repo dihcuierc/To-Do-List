@@ -4,6 +4,7 @@ import classes from "./Todolist.module.css";
 import { useEffect, useState } from "react";
 import SortItems from "./components/SortItems";
 import FilterItems from "./components/FilterItems";
+import SearchTodo from "./components/SearchTodo";
 
 function Todolist() {
   const dummyData = [
@@ -14,7 +15,6 @@ function Todolist() {
         "Complete the math and history assignments for tomorrow's classes.",
       priority: 3,
       category: "Work",
-      done: false,
     },
     {
       id: 2,
@@ -22,7 +22,6 @@ function Todolist() {
       details: "Buy milk, eggs, bread, and fruits from the supermarket.",
       priority: 2,
       category: "Home",
-      done: false,
     },
     {
       id: 3,
@@ -31,7 +30,6 @@ function Todolist() {
         "Research and plan a vacation for next summer. Check for flight deals and accommodations.",
       priority: 3,
       category: "Other",
-      done: false,
     },
   ];
 
@@ -46,19 +44,26 @@ function Todolist() {
 
   const [todolist, setTodolist] = useState(dummyData);
   const [addItemForm, setAddItemForm] = useState(false);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("All");
   const [order, setOrder] = useState("ascending");
   const [updatedList, setUpdatedList] = useState(todolist);
+  const [search, setSearch] = useState("");
   const onClickedHandler = (props) => {
     setAddItemForm(props);
   };
 
   useEffect(() => {
+    const regex = new RegExp(search, "i");
+    const searchedItems =
+      search.trim() === ""
+        ? todolist
+        : todolist.filter((item) => regex.test(item.title));
+    console.log(searchedItems);
+
     const filteredItems =
       filter === "All"
-        ? todolist
-        : todolist.filter((item) => item.category === filter);
-    setUpdatedList(filteredItems);
+        ? searchedItems
+        : searchedItems.filter((item) => item.category === filter);
 
     const sortedList = [...filteredItems].sort((item1, item2) => {
       if (order === "ascending") {
@@ -68,7 +73,7 @@ function Todolist() {
       }
     });
     setUpdatedList(sortedList);
-  }, [filter, order, todolist]);
+  }, [filter, order, todolist, search]);
 
   return (
     <div className={classes.container}>
@@ -82,6 +87,7 @@ function Todolist() {
         setFilter={setFilter}
         categories={categories}
       />
+      <SearchTodo search={search} setSearch={setSearch} />
       {addItemForm && (
         <AddTodo
           onClicked={onClickedHandler}

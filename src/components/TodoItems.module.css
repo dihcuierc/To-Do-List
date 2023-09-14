@@ -1,14 +1,22 @@
-.item {
+.entry {
+  display: flex;
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
+  background-color: #f8f8f8;
+  align-items: left;
 }
 
-.item p {
+.text {
   margin: 0;
   padding: 0;
+  flex: 75%;
+}
+
+.button {
+  flex: 25%;
 }
 
 .removeButton {
@@ -19,6 +27,8 @@
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 5px;
+  width: 30%;
+  margin-left: 10%;
 }
 
 .doneButton {
@@ -29,10 +39,15 @@
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 5px;
+  width: 30%;
 }
 
-.remove:hover {
+.doneButton:hover {
   background-color: rgb(20, 125, 34);
+}
+
+.removeButton:hover {
+  background-color: #812222;
 }
 
 .done {
