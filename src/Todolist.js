@@ -7,32 +7,6 @@ import FilterItems from "./components/FilterItems";
 import SearchTodo from "./components/SearchTodo";
 
 function Todolist() {
-  const dummyData = [
-    {
-      id: 1,
-      title: "Finish Homework",
-      details:
-        "Complete the math and history assignments for tomorrow's classes.",
-      priority: 3,
-      category: "Work",
-    },
-    {
-      id: 2,
-      title: "Grocery Shopping",
-      details: "Buy milk, eggs, bread, and fruits from the supermarket.",
-      priority: 2,
-      category: "Home",
-    },
-    {
-      id: 3,
-      title: "Plan Vacation",
-      details:
-        "Research and plan a vacation for next summer. Check for flight deals and accommodations.",
-      priority: 3,
-      category: "Other",
-    },
-  ];
-
   const categories = [
     "Work",
     "Personal",
@@ -42,12 +16,36 @@ function Todolist() {
     "Other",
   ];
 
-  const [todolist, setTodolist] = useState(dummyData);
+  const [todolist, setTodolist] = useState([]);
   const [addItemForm, setAddItemForm] = useState(false);
   const [filter, setFilter] = useState("All");
   const [order, setOrder] = useState("ascending");
   const [updatedList, setUpdatedList] = useState(todolist);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const fetchTodo = async () => {
+      const response = await fetch(
+        "https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todolist.json"
+      );
+      const responseData = await response.json();
+
+      const loadedTodo = [];
+      for (const key in responseData) {
+        loadedTodo.push({
+          id: key,
+          title: responseData[key],
+          details: responseData[key],
+          priority: responseData[key],
+          category: responseData[key],
+        });
+      }
+      setTodolist(loadedTodo);
+    };
+    console.log(todolist);
+    fetchTodo();
+  }, []);
+
   const onClickedHandler = (props) => {
     setAddItemForm(props);
   };
