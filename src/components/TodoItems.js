@@ -2,7 +2,7 @@ import classes from "./TodoItems.module.css";
 
 export default function TodoItems(props) {
   const handleRemove = (itemId) => {
-    const updatedItems = props.items.filter((item) => item.id !== itemId);
+    const updatedItems = props.items.filter((item) => item.key !== itemId);
     props.onUpdateItems(updatedItems);
     fetch(
       `https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todo/${itemId}.json`,
@@ -27,7 +27,7 @@ export default function TodoItems(props) {
       {props.updatedList.map((item) => (
         <div
           className={`${classes.entry} ${item.done ? classes.done : ""}`}
-          key={item.title}
+          key={item.key}
         >
           <div className={classes.labels}>
             <p>Title</p>
@@ -44,13 +44,13 @@ export default function TodoItems(props) {
           <div className={classes.button}>
             <button
               className={classes.doneButton}
-              onClick={() => handleDone(item.id)}
+              onClick={() => handleDone(item.key)}
             >
               Done
             </button>
             <button
               className={classes.removeButton}
-              onClick={() => handleRemove(item.id)}
+              onClick={() => handleRemove(item.key)}
             >
               X
             </button>

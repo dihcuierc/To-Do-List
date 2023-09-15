@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import Modal from "../UI/Modal";
 import classes from "./AddTodo.module.css";
 
 export default function AddTodo(props) {
+  const id = useId();
+  console.log(id);
   const [formData, setFormData] = useState({
+    key: id,
     title: "",
     details: "",
     priority: "1",
@@ -32,6 +35,7 @@ export default function AddTodo(props) {
           details: formData.details,
           priority: formData.priority,
           category: formData.category,
+          key: formData.key,
         }),
       }
     );

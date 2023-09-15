@@ -33,7 +33,7 @@ function Todolist() {
       const loadedTodo = [];
       for (const key in responseData) {
         loadedTodo.push({
-          id: key,
+          key: key,
           title: responseData[key].title,
           details: responseData[key].details,
           priority: responseData[key].priority,
@@ -89,7 +89,6 @@ function Todolist() {
           data={todolist}
           onDataAdd={setTodolist}
           categories={categories}
-          add={{ title: "", details: "", priority: "", category: "", done: "" }}
         />
       )}
       {updatedList.length !== 0 ? (
