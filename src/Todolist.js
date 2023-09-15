@@ -31,9 +31,7 @@ function Todolist() {
       const responseData = await response.json();
 
       const loadedTodo = [];
-      console.log("responseData", responseData);
       for (const key in responseData) {
-        console.log("key", key);
         loadedTodo.push({
           id: key,
           title: responseData[key].title,
@@ -45,7 +43,6 @@ function Todolist() {
       }
       setTodolist(loadedTodo);
     };
-    console.log(todolist);
     fetchTodo();
   }, []);
 
@@ -59,13 +56,10 @@ function Todolist() {
       search.trim() === ""
         ? todolist
         : todolist.filter((item) => regex.test(item.title));
-    console.log(searchedItems);
-
     const filteredItems =
       filter === "All"
         ? searchedItems
         : searchedItems.filter((item) => item.category === filter);
-
     const sortedList = [...filteredItems].sort((item1, item2) => {
       if (order === "ascending") {
         return item1.priority - item2.priority;
@@ -98,13 +92,17 @@ function Todolist() {
           add={{ title: "", details: "", priority: "", category: "", done: "" }}
         />
       )}
-      <TodoItems
-        updatedList={updatedList}
-        onUpdateItems={setTodolist}
-        filterCategory={filter}
-        order={order}
-        items={todolist}
-      />
+      {updatedList.length !== 0 ? (
+        <TodoItems
+          updatedList={updatedList}
+          onUpdateItems={setTodolist}
+          filterCategory={filter}
+          order={order}
+          items={todolist}
+        />
+      ) : (
+        <h1>Add new Todos</h1>
+      )}
     </div>
   );
 }

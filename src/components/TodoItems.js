@@ -29,6 +29,12 @@ export default function TodoItems(props) {
           className={`${classes.entry} ${item.done ? classes.done : ""}`}
           key={item.title}
         >
+          <div className={classes.labels}>
+            <p>Title</p>
+            <p>Details</p>
+            <p>Priority</p>
+            <p>Category</p>
+          </div>
           <div className={classes.text}>
             <p>{item.title}</p>
             <p>{item.details}</p>
