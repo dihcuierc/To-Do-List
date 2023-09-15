@@ -14,7 +14,7 @@ export default function TodoItems(props) {
 
   const handleDone = (itemId) => {
     const updatedItems = props.items.map((item) => {
-      if (item.id === itemId) {
+      if (item.key === itemId) {
         return { ...item, done: true };
       }
       return item;

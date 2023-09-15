@@ -35,6 +35,7 @@ export default function AddTodo(props) {
           priority: formData.priority,
           category: formData.category,
           key: formData.key,
+          done: formData.done,
         }),
       }
     );
