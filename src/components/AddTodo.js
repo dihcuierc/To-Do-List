@@ -4,7 +4,6 @@ import classes from "./AddTodo.module.css";
 
 export default function AddTodo(props) {
   const id = useId();
-  console.log(id);
   const [formData, setFormData] = useState({
     key: id,
     title: "",

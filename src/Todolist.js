@@ -99,8 +99,10 @@ function Todolist() {
           order={order}
           items={todolist}
         />
-      ) : (
+      ) : todolist.length === 0 ? (
         <h1>Add new Todos</h1>
+      ) : (
+        <h1>No Todos found</h1>
       )}
     </div>
   );

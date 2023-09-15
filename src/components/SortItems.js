@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import classes from "./Dropdown.module.css";
 
 export default function SortItems(props) {
@@ -7,15 +6,22 @@ export default function SortItems(props) {
   };
 
   return (
-    <div className={classes.container}>
-      <label className={classes.label}>Sort by Priority: </label>
-      <select
-        className={classes.select}
-        onChange={(e) => handleSort(e.target.value)}
-      >
-        <option value="ascending">Ascending</option>
-        <option value="descending">Descending</option>
-      </select>
-    </div>
+    <form className={classes.container} id="Priority">
+      <label className={classes.label}>
+        Sort by Priority:{" "}
+        <select
+          className={classes.select}
+          onChange={(e) => handleSort(e.target.value)}
+          id="Priority"
+        >
+          <option value="ascending" id="ascending">
+            Ascending
+          </option>
+          <option value="descending" id="descending">
+            Descending
+          </option>
+        </select>
+      </label>
+    </form>
   );
 }
