@@ -26,18 +26,20 @@ function Todolist() {
   useEffect(() => {
     const fetchTodo = async () => {
       const response = await fetch(
-        "https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todolist.json"
+        "https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todo.json"
       );
       const responseData = await response.json();
 
       const loadedTodo = [];
+      console.log("responseData", responseData);
       for (const key in responseData) {
+        console.log("key", key);
         loadedTodo.push({
           id: key,
-          title: responseData[key],
-          details: responseData[key],
-          priority: responseData[key],
-          category: responseData[key],
+          title: responseData[key].title,
+          details: responseData[key].details,
+          priority: responseData[key].priority,
+          category: responseData[key].category,
         });
       }
       setTodolist(loadedTodo);
