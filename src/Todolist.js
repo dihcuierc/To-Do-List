@@ -40,6 +40,7 @@ function Todolist() {
           details: responseData[key].details,
           priority: responseData[key].priority,
           category: responseData[key].category,
+          done: responseData[key].done,
         });
       }
       setTodolist(loadedTodo);

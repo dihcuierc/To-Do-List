@@ -8,6 +8,7 @@ export default function AddTodo(props) {
     details: "",
     priority: "1",
     category: "Work",
+    done: false,
   });
 
   const handleInputChange = (event) => {
@@ -22,6 +23,18 @@ export default function AddTodo(props) {
     event.preventDefault();
     props.onClicked(false);
     props.onDataAdd((prev) => [...prev, formData]);
+    fetch(
+      "https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todo.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          title: formData.title,
+          details: formData.details,
+          priority: formData.priority,
+          category: formData.category,
+        }),
+      }
+    );
   };
 
   const handleCancel = () => {
