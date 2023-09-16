@@ -6,8 +6,8 @@ export default function FilterItems(props) {
   };
 
   return (
-    <form className={classes.container} id="Filter">
-      <label className={classes.label} id="Filter">
+    <form className={classes.container} id="Filter-form">
+      <label className={classes.label} id="Filter-label">
         Filter by Category:{" "}
         <select
           className={classes.select}

@@ -6,8 +6,8 @@ export default function SortItems(props) {
   };
 
   return (
-    <form className={classes.container} id="Priority">
-      <label className={classes.label}>
+    <form className={classes.container} id="Priority-form">
+      <label className={classes.label} id="Priority-label">
         Sort by Priority:{" "}
         <select
           className={classes.select}
