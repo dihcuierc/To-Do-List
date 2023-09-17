@@ -1,10 +1,10 @@
-import TodoItems from "./components/TodoItems";
-import AddTodo from "./components/AddTodo";
+import TodoItems from "./TodoItems";
+import AddTodo from "./AddTodo";
 import classes from "./Todolist.module.css";
 import { useEffect, useState } from "react";
-import SortItems from "./components/SortItems";
-import FilterItems from "./components/FilterItems";
-import SearchTodo from "./components/SearchTodo";
+import SortItems from "./SortItems";
+import FilterItems from "./FilterItems";
+import SearchTodo from "./SearchTodo";
 
 function Todolist() {
   const categories = [

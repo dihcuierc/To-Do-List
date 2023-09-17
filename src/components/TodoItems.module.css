@@ -27,7 +27,7 @@
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 5px;
-  width: 30%;
+  width: 60px;
   margin-left: 10%;
 }
 
@@ -39,7 +39,7 @@
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 5px;
-  width: 30%;
+  width: 60px;
 }
 
 .doneButton:hover {
