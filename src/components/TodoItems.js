@@ -13,33 +13,63 @@ export default function TodoItems(props) {
   };
 
   const handleDone = (itemId) => {
+    console.log(itemId);
     const updatedItems = props.items.map((item) => {
       if (item.key === itemId) {
         return { ...item, done: true };
       }
+
       return item;
     });
+    console.log(updatedItems);
     props.onUpdateItems(updatedItems);
   };
 
   return (
     <div>
       {props.updatedList.map((item) => (
-        <div
-          className={`${classes.entry} ${item.done ? classes.done : ""}`}
-          key={item.key}
-        >
-          <div className={classes.labels}>
-            <p>Title</p>
-            <p>Details</p>
-            <p>Priority</p>
-            <p>Category</p>
-          </div>
-          <div className={classes.text}>
-            <p>{item.title}</p>
-            <p>{item.details}</p>
-            <p>{item.priority}</p>
-            <p>{item.category}</p>
+        <div className={classes.entry} key={item.key}>
+          <div>
+            {item.title && (
+              <div className={`${classes.content} ${"title"}`}>
+                <p className={classes.labels}>Title:</p>
+                <p
+                  className={`${classes.text} ${item.done ? classes.done : ""}`}
+                >
+                  {item.title}
+                </p>
+              </div>
+            )}
+            {item.details && (
+              <div className={`${classes.content} ${"details"}`}>
+                <p className={classes.labels}>Details:</p>
+                <p
+                  className={`${classes.text} ${item.done ? classes.done : ""}`}
+                >
+                  {item.details}
+                </p>
+              </div>
+            )}
+            {item.priority && (
+              <div className={`${classes.content} ${"priority"}`}>
+                <p className={classes.labels}>Priority:</p>
+                <p
+                  className={`${classes.text} ${item.done ? classes.done : ""}`}
+                >
+                  {item.priority}
+                </p>
+              </div>
+            )}
+            {item.category && (
+              <div className={`${classes.content} ${"category"}`}>
+                <p className={classes.labels}>Category:</p>
+                <p
+                  className={`${classes.text} ${item.done ? classes.done : ""}`}
+                >
+                  {item.category}
+                </p>
+              </div>
+            )}
           </div>
           <div className={classes.button}>
             <button

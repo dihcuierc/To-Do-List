@@ -29,7 +29,6 @@ function Todolist() {
         "https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todo.json"
       );
       const responseData = await response.json();
-
       const loadedTodo = [];
       for (const key in responseData) {
         loadedTodo.push({

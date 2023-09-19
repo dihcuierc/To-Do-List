@@ -1,11 +1,11 @@
 import "./App.css";
 import Todolist from "./components/Todolist";
-import Header from "./components/Header";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Layout />
       <Todolist />
     </div>
   );

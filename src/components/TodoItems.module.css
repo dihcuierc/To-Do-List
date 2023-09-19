@@ -1,5 +1,4 @@
 .entry {
-  display: flex;
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -9,10 +8,23 @@
   align-items: left;
 }
 
+.content {
+  display: flex;
+}
+
+.labels {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333; /* Text color for labels */
+  font-size: 16px; /* Font size for labels */
+  text-transform: uppercase; /* Convert text to uppercase */
+  width: 30%;
+}
+
 .text {
-  margin: 0;
-  padding: 0;
-  flex: 75%;
+  margin-right: 10px;
+  font-size: 16px; /* Font size for labels */
+  align-self: right;
 }
 
 .button {
