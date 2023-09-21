@@ -51,7 +51,8 @@ function Todolist() {
   };
 
   useEffect(() => {
-    const regex = new RegExp(search, "i");
+    const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(escapedSearch, "i");
     const searchedItems =
       search.trim() === ""
         ? todolist
@@ -71,39 +72,44 @@ function Todolist() {
   }, [filter, order, todolist, search]);
 
   return (
-    <div className={classes.container}>
-      <h1 className={classes.header}>Todolist</h1>
-      <button className={classes.button} onClick={() => onClickedHandler(true)}>
-        Add
-      </button>
-      <SortItems setOrder={setOrder} />
-      <FilterItems
-        filterCategory={todolist}
-        setFilter={setFilter}
-        categories={categories}
-      />
-      <SearchTodo search={search} setSearch={setSearch} />
-      {addItemForm && (
-        <AddTodo
-          onClicked={onClickedHandler}
-          data={todolist}
-          onDataAdd={setTodolist}
+    <div className={classes.wrapper}>
+      <div className={classes.container}>
+        <h1 className={classes.header}>Todolist</h1>
+        <button
+          className={classes.button}
+          onClick={() => onClickedHandler(true)}
+        >
+          Add
+        </button>
+        <SortItems setOrder={setOrder} />
+        <FilterItems
+          filterCategory={todolist}
+          setFilter={setFilter}
           categories={categories}
         />
-      )}
-      {updatedList.length !== 0 ? (
-        <TodoItems
-          updatedList={updatedList}
-          onUpdateItems={setTodolist}
-          filterCategory={filter}
-          order={order}
-          items={todolist}
-        />
-      ) : todolist.length === 0 ? (
-        <h1>Add new Todos</h1>
-      ) : (
-        <h1>No Todos found</h1>
-      )}
+        <SearchTodo search={search} setSearch={setSearch} />
+        {addItemForm && (
+          <AddTodo
+            onClicked={onClickedHandler}
+            data={todolist}
+            onDataAdd={setTodolist}
+            categories={categories}
+          />
+        )}
+        {updatedList.length !== 0 ? (
+          <TodoItems
+            updatedList={updatedList}
+            onUpdateItems={setTodolist}
+            filterCategory={filter}
+            order={order}
+            items={todolist}
+          />
+        ) : todolist.length === 0 ? (
+          <h1>Add new Todos</h1>
+        ) : (
+          <h1>No Todos found</h1>
+        )}
+      </div>
     </div>
   );
 }
