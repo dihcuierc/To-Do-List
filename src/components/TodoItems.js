@@ -1,15 +1,12 @@
+import { getDatabase, ref, remove, update } from "firebase/database";
 import classes from "./TodoItems.module.css";
 
 export default function TodoItems(props) {
+  const db = getDatabase();
   const handleRemove = (itemId) => {
     const updatedItems = props.items.filter((item) => item.key !== itemId);
     props.onUpdateItems(updatedItems);
-    fetch(
-      `https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todo/${itemId}.json`,
-      {
-        method: "DELETE",
-      }
-    );
+    remove(ref(db, "todo/" + itemId));
   };
 
   const handleDone = (itemId) => {
@@ -18,11 +15,13 @@ export default function TodoItems(props) {
       if (item.key === itemId) {
         return { ...item, done: true };
       }
-
       return item;
     });
     console.log(updatedItems);
     props.onUpdateItems(updatedItems);
+    const updates = {};
+    updates["/todo/"] = updatedItems;
+    update(ref(db), updates);
   };
 
   return (

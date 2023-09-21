@@ -1,3 +1,4 @@
+import { getDatabase, ref, set } from "firebase/database";
 import { useState, useId } from "react";
 import Modal from "../UI/Modal";
 import classes from "./AddTodo.module.css";
@@ -25,20 +26,16 @@ export default function AddTodo(props) {
     event.preventDefault();
     props.onClicked(false);
     props.onDataAdd((prev) => [...prev, formData]);
-    fetch(
-      "https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todo.json",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          title: formData.title,
-          details: formData.details,
-          priority: formData.priority,
-          category: formData.category,
-          key: formData.key,
-          done: formData.done,
-        }),
-      }
-    );
+
+    const db = getDatabase();
+    set(ref(db, "todo/" + formData.key), {
+      title: formData.title,
+      details: formData.details,
+      priority: formData.priority,
+      category: formData.category,
+      key: formData.key,
+      done: formData.done,
+    }).catch(alert);
   };
 
   const handleCancel = () => {
