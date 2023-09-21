@@ -1,4 +1,4 @@
-import classes from "./Dropdown.module.css";
+import classes from "./Tools.module.css";
 
 export default function SortItems(props) {
   const handleSort = (order) => {

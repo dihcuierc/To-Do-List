@@ -1,7 +1,7 @@
-import classes from "./Layout.module.css";
+import classes from "./Header.module.css";
 import todoImage from "../assets/image.jpg";
 
-export default function Layout() {
+export default function Header() {
   return (
     <>
       <div>

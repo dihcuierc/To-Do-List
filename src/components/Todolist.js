@@ -1,12 +1,12 @@
-import firebase from "../firebase";
+import firebase from "../backend/firebase";
 import { getDatabase, ref, child, get } from "firebase/database";
 import TodoItems from "./TodoItems";
 import AddTodo from "./AddTodo";
 import classes from "./Todolist.module.css";
 import { useEffect, useState } from "react";
-import SortItems from "./SortItems";
-import FilterItems from "./FilterItems";
-import SearchTodo from "./SearchTodo";
+import SortItems from "./Tools/SortItems";
+import FilterItems from "./Tools/FilterItems";
+import SearchTodo from "./Tools/SearchTodo";
 
 function Todolist() {
   const categories = [
