@@ -1,13 +1,13 @@
-import firebase from "../firebase";
-import { getDatabase, ref, set } from "firebase/database";
-import { useState, useId } from "react";
+import { getDatabase, ref, set, push, child } from "firebase/database";
+import { useState } from "react";
 import Modal from "../UI/Modal";
 import classes from "./AddTodo.module.css";
 
 export default function AddTodo(props) {
-  const id = useId();
+  const db = getDatabase();
+  const newKey = push(child(ref(db), "todo")).key;
   const [formData, setFormData] = useState({
-    key: id,
+    key: newKey,
     title: "",
     details: "",
     priority: "1",
@@ -28,7 +28,6 @@ export default function AddTodo(props) {
     props.onClicked(false);
     props.onDataAdd((prev) => [...prev, formData]);
 
-    const db = getDatabase();
     set(ref(db, "todo/" + formData.key), {
       title: formData.title,
       details: formData.details,

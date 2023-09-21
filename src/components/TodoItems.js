@@ -17,9 +17,9 @@ export default function TodoItems(props) {
       return item;
     });
     props.onUpdateItems(updatedItems);
-    const updates = {};
-    updates["/todo/"] = updatedItems;
-    update(ref(db), updates);
+    update(ref(db, "todo/" + itemId), {
+      done: true,
+    });
   };
 
   return (
