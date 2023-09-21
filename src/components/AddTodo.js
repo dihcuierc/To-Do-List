@@ -1,3 +1,4 @@
+import firebase from "../firebase";
 import { getDatabase, ref, set } from "firebase/database";
 import { useState, useId } from "react";
 import Modal from "../UI/Modal";
@@ -35,7 +36,7 @@ export default function AddTodo(props) {
       category: formData.category,
       key: formData.key,
       done: formData.done,
-    }).catch(alert);
+    });
   };
 
   const handleCancel = () => {

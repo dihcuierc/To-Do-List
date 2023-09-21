@@ -1,3 +1,5 @@
+import firebase from "../firebase";
+import { getDatabase, ref, child, get } from "firebase/database";
 import TodoItems from "./TodoItems";
 import AddTodo from "./AddTodo";
 import classes from "./Todolist.module.css";
@@ -23,26 +25,25 @@ function Todolist() {
   const [updatedList, setUpdatedList] = useState(todolist);
   const [search, setSearch] = useState("");
 
+  const dbRef = ref(getDatabase());
   useEffect(() => {
-    const fetchTodo = async () => {
-      const response = await fetch(
-        "https://to-do-list-15bca-default-rtdb.asia-southeast1.firebasedatabase.app/todo.json"
-      );
-      const responseData = await response.json();
-      const loadedTodo = [];
-      for (const key in responseData) {
-        loadedTodo.push({
-          key: key,
-          title: responseData[key].title,
-          details: responseData[key].details,
-          priority: responseData[key].priority,
-          category: responseData[key].category,
-          done: responseData[key].done,
-        });
+    get(child(dbRef, "todo/")).then((snapshot) => {
+      if (snapshot.exists()) {
+        const responseData = snapshot.val();
+        const loadedTodo = [];
+        for (const key in responseData) {
+          loadedTodo.push({
+            key: key,
+            title: responseData[key].title,
+            details: responseData[key].details,
+            priority: responseData[key].priority,
+            category: responseData[key].category,
+            done: responseData[key].done,
+          });
+        }
+        setTodolist(loadedTodo);
       }
-      setTodolist(loadedTodo);
-    };
-    fetchTodo();
+    });
   }, []);
 
   const onClickedHandler = (props) => {

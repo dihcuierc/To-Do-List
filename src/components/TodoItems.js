@@ -10,14 +10,12 @@ export default function TodoItems(props) {
   };
 
   const handleDone = (itemId) => {
-    console.log(itemId);
     const updatedItems = props.items.map((item) => {
       if (item.key === itemId) {
         return { ...item, done: true };
       }
       return item;
     });
-    console.log(updatedItems);
     props.onUpdateItems(updatedItems);
     const updates = {};
     updates["/todo/"] = updatedItems;
