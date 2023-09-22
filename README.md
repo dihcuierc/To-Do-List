@@ -1,15 +1,23 @@
-# Getting Started with Create React App
+<h1 align="center">To Do List</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Background
 
-## Available Scripts
+My first attempt at using Reactjs to make a website.
 
-In the project directory, you can run:
+## Functionalities
 
-### `npm start`
+### `Add a To-do item`
+
+### `Remove a To-do item`
+
+### `Sort To-do items`
+
+### `Filter To-do items`
+
+### `Search for a To-do item`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [https://to-do-list-15bca.web.app/](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
