@@ -12,7 +12,7 @@
 My first attempt at using Reactjs to make a website together with Nodejs, Expressjs and MongoDB.
 
 <h2 id = "Todo">Todo list</h2>
-<img src="https://raw.githubusercontent.com/dihcuierc/To-Do-List/main/public/ToDoList.jpg " alt="Todo list image"/>
+<img src="https://raw.githubusercontent.com/dihcuierc/To-Do-List/main/frontend/public/ToDoList.jpg " alt="Todo list image"/>
 
 ### Each Todo item comprises of a title, details, priority level, and a category.
 
