@@ -3,9 +3,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const router = require("./routes/router");
 const mongoose = require("mongoose");
+const path = require("path");
+
 require("dotenv/config");
 
 const app = express();
+app.use(express.static(path.join(__dirname, "../build")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
