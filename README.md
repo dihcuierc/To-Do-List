@@ -69,18 +69,17 @@ User can use the search bar to look for a specific Todo item. Search is based on
 git clone https://github.com/dihcuierc/To-Do-List.git
 ```
 
-2. Navigate to the frontend folder, download dependencies and start client
+2. Download dependencies and start client
 
 ```bash
-cd frontend/
 npm i
 npm start
 ```
 
-3. Navigate to the backend folder, open up another terminal, download dependencies and start server
+3. Navigate to the api folder, open up another terminal, download dependencies and start server
 
 ```bash
-cd backend/
+cd api/
 npm i
 npm start
 ```
