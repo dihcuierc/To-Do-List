@@ -1,78 +1,86 @@
-<h1 align="center">To Do List</h1>
+<h1 align="center">Todo List</h1>
 
-## Background
+<h2 align = "center"> Table Of Contents </h2>
 
-My first attempt at using Reactjs to make a website.
+- [Background](#Background) <br/>
+- [Todo list](#Todo) <br/>
+- [Functionalities](#Functionalities) <br/>
+- [Extras](#Extras) <br/>
 
-## Functionalities
+<h2 id = "Background">Background</h2>
 
-### `Add a To-do item`
+My first attempt at using Reactjs to make a website together with Nodejs, Expressjs and MongoDB.
 
-### `Remove a To-do item`
+<h2 id = "Todo">Todo list</h2>
+<img src="https://raw.githubusercontent.com/dihcuierc/To-Do-List/main/public/ToDoList.jpg " alt="Todo list image"/>
+
+### Each Todo item comprises of a title, details, priority level, and a category.
+
+- `Title`: Title of the Todo item
+
+- `Details`: Detail explanation of the task to be completed. (Optional input)
+
+- `Priority`: Priority to complete the Todo item, 1 being highest priority
+
+- `Category`: Categoty which the Todo item is categorised under.
+
+<h2 id = "Functionalities">Functionalities</h2>
+
+### `Add a Todo item`
+
+Click on the `Add` button, fill in the necessary inputs and click on `Add` button to finalise input. (The `Add Todo form` will prompt for input should you leave out important details.) Your new Todo item will be added to the list of Todo items on the main page.
+
+### `Remove a Todo item`
+
+Click on the `X` button at the bottom of each Todo item to remove the Todo item from the list.
+
+### `Completed Todo`
+
+Click on the `Done` button at the bottom of each Todo item to mark the task as completed. The Todo item will have a strikethrough across the text.
 
 ### `Sort To-do items`
 
-### `Filter To-do items`
+Todo items will be sorted based on priority level. User can choose the `Ascending` or `Descending` option.
 
-### `Search for a To-do item`
+### `Filter Todo items`
 
-Runs the app in the development mode.\
-Open [https://to-do-list-15bca.web.app/](http://localhost:3000) to view it in your browser.
+Todo items can be filtered for users look at a specific group of Todo items. User can choose to filter by `Work`, `Personal`, `Home`, `Health & Fitness`, `Shopping` or `Others`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `Search for a Todo item`
 
-### `npm test`
+User can use the search bar to look for a specific Todo item. Search is based on the Todo item's title name only.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h2 id = "Extras">Extras</h2>
 
-### `npm run build`
+### Todo in the future:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Implement user `Sign-up`, `Login` and `Authentication` functionality.
+- Allow users to `edit` their Todo item.
+- Allow users to `undo` Done and Remove move.
+- Include Todo item's details description to be searchable in the Search bar.
+- Add in a `Time` information for each Todo item and add in a Reminder functionality to remind users of the Todo.
+- Improve visuals.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running the Webpage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the folder
 
-### `npm run eject`
+```bash
+git clone https://github.com/dihcuierc/To-Do-List.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Navigate to the frontend folder, download dependencies and start client
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd frontend/
+npm i
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Navigate to the backend folder, open up another terminal, download dependencies and start server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+cd backend/
+npm i
+npm start
+```
