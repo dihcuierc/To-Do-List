@@ -25,7 +25,7 @@ export default function AddTodo(props) {
 
   const axiosPostData = async () => {
     await axios
-      .post("https://to-do-list-api-iota.vercel.app/add", formData)
+      .post("/add", formData)
       .then((res) => toast.success(res.data))
       .catch((err) => toast.error(err));
   };

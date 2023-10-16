@@ -28,7 +28,7 @@ function Todolist() {
   useEffect(() => {
     const axiosFetchData = async () => {
       await axios
-        .get("https://to-do-list-api-iota.vercel.app/todoitems")
+        .get("/todoitems")
         .then((res) => {
           setTodolist(res.data);
         })

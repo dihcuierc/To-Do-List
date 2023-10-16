@@ -8,11 +8,9 @@ export default function TodoItems(props) {
     props.onUpdateItems(updatedItems);
 
     const axiosDeleteData = async (req, res) => {
-      await axios
-        .delete(`https://to-do-list-api-iota.vercel.app/todoitems/${itemId}`)
-        .then((res) => {
-          toast.success(res.data);
-        });
+      await axios.delete(`/todoitems/${itemId}`).then((res) => {
+        toast.success(res.data);
+      });
     };
 
     axiosDeleteData();
@@ -21,7 +19,7 @@ export default function TodoItems(props) {
   const handleDone = (itemId) => {
     const axiosUpdateData = async (item) => {
       await axios
-        .put(`https://to-do-list-api-iota.vercel.app/todoitems/${itemId}`, item)
+        .put(`/todoitems/${itemId}`, item)
         .then((res) => {
           toast.success(res.data);
         })
