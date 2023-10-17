@@ -9,10 +9,10 @@
 
 <h2 id = "Background">Background</h2>
 
-My first attempt at using Reactjs to make a website together with Nodejs, Expressjs and MongoDB.
+My first attempt at using Reactjs to make a website together with Nodejs, Expressjs and MongoDB. [Todo List Website](https://todolist-ernest.vercel.app/)
 
 <h2 id = "Todo">Todo list</h2>
-<img src="https://raw.githubusercontent.com/dihcuierc/To-Do-List/main/frontend/public/ToDoList.jpg " alt="Todo list image"/>
+<img src="https://raw.githubusercontent.com/dihcuierc/To-Do-List/main/client/public/ToDoList.jpg " alt="Todo list image"/>
 
 ### Each Todo item comprises of a title, details, priority level, and a category.
 
@@ -61,7 +61,7 @@ User can use the search bar to look for a specific Todo item. Search is based on
 - Add in a `Time` information for each Todo item and add in a Reminder functionality to remind users of the Todo.
 - Improve visuals.
 
-### Running the Webpage
+### Running on Local Terminal
 
 1. Clone the folder
 
@@ -69,9 +69,10 @@ User can use the search bar to look for a specific Todo item. Search is based on
 git clone https://github.com/dihcuierc/To-Do-List.git
 ```
 
-2. Download dependencies and start client
+2. Navigate into client folder, download dependencies and start client
 
 ```bash
+cd client/
 npm i
 npm start
 ```
